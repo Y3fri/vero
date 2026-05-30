@@ -1,0 +1,256 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Nunito:wght@200;300;400&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+.scene{
+  width:100%;height:100vh;min-height:500px;
+  background: radial-gradient(ellipse at 40% 30%, #fff0f8 0%, #ffe4f2 40%, #ffd0e8 80%, #ffbedd 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.bg-blob{position:absolute;border-radius:50%;filter:blur(70px);animation:blobMove 7s ease-in-out infinite alternate;}
+.b1{width:380px;height:380px;background:rgba(255,192,220,0.45);top:-120px;left:-80px;}
+.b2{width:280px;height:280px;background:rgba(230,150,200,0.3);bottom:-60px;right:-40px;animation-delay:2.5s;}
+.b3{width:200px;height:200px;background:rgba(255,230,245,0.5);top:40%;left:60%;animation-delay:1.5s;}
+@keyframes blobMove{from{transform:translate(0,0)scale(1);}to{transform:translate(20px,15px)scale(1.07);}}
+
+/* Pétalos cayendo */
+.petal{position:absolute;top:-30px;pointer-events:none;animation:fallP linear infinite;opacity:0;}
+@keyframes fallP{
+  0%{opacity:0;transform:translateY(0) rotate(0deg);}
+  8%{opacity:1;}
+  90%{opacity:0.5;}
+  100%{opacity:0;transform:translateY(105vh) rotate(500deg);}
+}
+
+/* Flores esquinas */
+.cf{position:absolute;animation:cfFloat 5s ease-in-out infinite alternate;pointer-events:none;}
+.cf1{top:-15px;left:-15px;animation-delay:0s;}
+.cf2{top:-15px;right:-15px;animation-delay:1.2s;}
+.cf3{bottom:-15px;left:-15px;animation-delay:2.4s;}
+.cf4{bottom:-15px;right:-15px;animation-delay:0.6s;}
+@keyframes cfFloat{
+  from{transform:translate(0,0)rotate(0deg);}
+  to{transform:translate(6px,-10px)rotate(6deg);}
+}
+
+/* Iconos flotantes */
+.floatie{position:absolute;pointer-events:none;animation:floatDrift ease-in-out infinite alternate;}
+@keyframes floatDrift{
+  from{transform:translate(0,0)rotate(-8deg);}
+  to{transform:translate(10px,-14px)rotate(8deg);}
+}
+
+/* Centro */
+.center{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;}
+
+.main-flower{
+  width:clamp(150px,25vw,210px);
+  height:clamp(150px,25vw,210px);
+  animation:flowerFloat 4s ease-in-out infinite;
+  filter:drop-shadow(0 8px 28px rgba(200,60,120,0.28));
+}
+@keyframes flowerFloat{
+  0%,100%{transform:translateY(0)rotate(0deg);}
+  50%{transform:translateY(-13px)rotate(3deg);}
+}
+
+.label{
+  font-family:'Nunito',sans-serif;
+  font-weight:300;font-size:clamp(9px,1.8vw,12px);
+  letter-spacing:7px;color:#c0507a;text-transform:uppercase;
+  margin-top:clamp(14px,2.5vw,22px);
+  animation:fadeUp 1s ease forwards;opacity:0;animation-delay:0.4s;
+}
+.name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;font-size:clamp(54px,11vw,90px);
+  color:#7a1a40;line-height:0.92;letter-spacing:-1px;
+  animation:fadeUp 1s ease forwards;opacity:0;animation-delay:0.7s;
+}
+.name em{font-style:italic;color:#c03868;}
+
+.div-row{display:flex;align-items:center;gap:10px;margin:clamp(10px,2vw,16px) 0;animation:fadeUp 1s ease forwards;opacity:0;animation-delay:1s;}
+.dl{width:clamp(35px,7vw,65px);height:1px;background:linear-gradient(to right,transparent,#d0608a);}
+.dl.r{background:linear-gradient(to left,transparent,#d0608a);}
+.dd{width:5px;height:5px;border-radius:50%;background:#d0608a;}
+
+.msg{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:clamp(15px,2.8vw,21px);
+  color:#8a2450;line-height:1.5;
+  animation:fadeUp 1s ease forwards;opacity:0;animation-delay:1.3s;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Sparkles */
+.sp{position:absolute;border-radius:50%;background:#fff;pointer-events:none;animation:spAnim ease-in-out infinite;}
+@keyframes spAnim{0%,100%{opacity:0;transform:scale(0);}50%{opacity:1;transform:scale(1);}}
+</style>
+
+<div class="scene">
+  <div class="bg-blob b1"></div>
+  <div class="bg-blob b2"></div>
+  <div class="bg-blob b3"></div>
+
+  <!-- flores esquinas -->
+  <svg class="cf cf1" width="150" height="150" viewBox="0 0 150 150">
+    <g transform="translate(22,22)">
+      <ellipse cx="0" cy="-36" rx="13" ry="26" fill="#ffb8d8" opacity="0.75" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-36" rx="13" ry="26" fill="#ffaacf" opacity="0.75" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-36" rx="13" ry="26" fill="#ffb8d8" opacity="0.75" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-36" rx="13" ry="26" fill="#ffaacf" opacity="0.75" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-36" rx="13" ry="26" fill="#ffb8d8" opacity="0.75" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-36" rx="13" ry="26" fill="#ffaacf" opacity="0.75" transform="rotate(300)"/>
+      <circle cx="0" cy="0" r="13" fill="#ffe060"/>
+      <circle cx="0" cy="0" r="7" fill="#ffb820"/>
+    </g>
+  </svg>
+  <svg class="cf cf2" width="130" height="130" viewBox="0 0 130 130" style="transform-origin:top right">
+    <g transform="translate(108,22)">
+      <ellipse cx="0" cy="-32" rx="11" ry="22" fill="#e8a0d0" opacity="0.7" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-32" rx="11" ry="22" fill="#da90c4" opacity="0.7" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-32" rx="11" ry="22" fill="#e8a0d0" opacity="0.7" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-32" rx="11" ry="22" fill="#da90c4" opacity="0.7" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-32" rx="11" ry="22" fill="#e8a0d0" opacity="0.7" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="11" fill="#ffd860"/>
+      <circle cx="0" cy="0" r="6" fill="#ffaa28"/>
+    </g>
+  </svg>
+  <svg class="cf cf3" width="120" height="120" viewBox="0 0 120 120">
+    <g transform="translate(20,98)">
+      <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffc0da" opacity="0.7" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffb0d0" opacity="0.7" transform="rotate(51)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffc0da" opacity="0.7" transform="rotate(102)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffb0d0" opacity="0.7" transform="rotate(153)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffc0da" opacity="0.7" transform="rotate(204)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffb0d0" opacity="0.7" transform="rotate(255)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffc0da" opacity="0.7" transform="rotate(306)"/>
+      <circle cx="0" cy="0" r="10" fill="#ffe458"/>
+      <circle cx="0" cy="0" r="6" fill="#ffa820"/>
+    </g>
+  </svg>
+  <svg class="cf cf4" width="140" height="140" viewBox="0 0 140 140">
+    <g transform="translate(118,118)">
+      <ellipse cx="0" cy="-34" rx="12" ry="24" fill="#f098c8" opacity="0.7" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-34" rx="12" ry="24" fill="#e888bc" opacity="0.7" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-34" rx="12" ry="24" fill="#f098c8" opacity="0.7" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-34" rx="12" ry="24" fill="#e888bc" opacity="0.7" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-34" rx="12" ry="24" fill="#f098c8" opacity="0.7" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-34" rx="12" ry="24" fill="#e888bc" opacity="0.7" transform="rotate(300)"/>
+      <circle cx="0" cy="0" r="12" fill="#ffd060"/>
+      <circle cx="0" cy="0" r="7" fill="#ff9818"/>
+    </g>
+  </svg>
+
+  <!-- floties -->
+  <div class="floatie" style="top:14%;left:7%;font-size:clamp(18px,3vw,26px);animation-duration:3.5s;">🌸</div>
+  <div class="floatie" style="top:20%;right:9%;font-size:clamp(16px,2.5vw,22px);animation-duration:4.2s;animation-delay:0.8s;">🌷</div>
+  <div class="floatie" style="bottom:22%;left:6%;font-size:clamp(16px,2.5vw,24px);animation-duration:3.8s;animation-delay:1.4s;">🌺</div>
+  <div class="floatie" style="bottom:18%;right:7%;font-size:clamp(18px,3vw,26px);animation-duration:3.2s;animation-delay:0.4s;">💗</div>
+  <div class="floatie" style="top:45%;left:3%;font-size:clamp(14px,2vw,20px);animation-duration:4.5s;animation-delay:1.8s;">✨</div>
+  <div class="floatie" style="top:42%;right:4%;font-size:clamp(14px,2vw,20px);animation-duration:3.6s;animation-delay:1s;">🌼</div>
+
+  <!-- CENTRO -->
+  <div class="center">
+    <svg class="main-flower" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- pétalos outer -->
+      <g transform="translate(110,108)">
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(40)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(80)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(160)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(200)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(280)"/>
+        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(320)"/>
+      </g>
+      <!-- pétalos inner -->
+      <g transform="translate(110,108)">
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(20)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(60)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(100)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(140)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(180)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(220)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(260)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(300)" opacity="0.88"/>
+        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(340)" opacity="0.88"/>
+      </g>
+      <!-- tallo -->
+      <path d="M110 178 Q106 198 100 212" stroke="#82c040" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="96" cy="205" rx="10" ry="6" fill="#82c040" transform="rotate(-25,96,205)"/>
+      <path d="M110 188 Q122 196 130 193" stroke="#82c040" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="133" cy="191" rx="9" ry="5.5" fill="#82c040" transform="rotate(-15,133,191)"/>
+      <!-- centro -->
+      <circle cx="110" cy="108" r="24" fill="#ffe060"/>
+      <circle cx="110" cy="108" r="17" fill="#ffc028"/>
+      <circle cx="110" cy="108" r="10" fill="#ff8c10"/>
+      <circle cx="104" cy="104" r="2.2" fill="#cc4400" opacity="0.65"/>
+      <circle cx="116" cy="104" r="2.2" fill="#cc4400" opacity="0.65"/>
+      <circle cx="110" cy="114" r="2.2" fill="#cc4400" opacity="0.65"/>
+      <circle cx="104" cy="113" r="1.5" fill="#cc4400" opacity="0.45"/>
+      <circle cx="116" cy="113" r="1.5" fill="#cc4400" opacity="0.45"/>
+    </svg>
+
+    <p class="label">para ti ✿</p>
+    <h1 class="name">Veró<em>nica</em></h1>
+    <div class="div-row">
+      <div class="dl"></div><div class="dd"></div><div class="dl r"></div>
+    </div>
+    <p class="msg">Eres la flor más bonita. 🌸</p>
+  </div>
+
+  <div id="petals"></div>
+  <div id="sparks"></div>
+</div>
+
+<script>
+const petC = document.getElementById('petals');
+const spkC = document.getElementById('sparks');
+
+const svgs = [
+  `<svg width="16" height="20" viewBox="0 0 16 20"><ellipse cx="8" cy="10" rx="6" ry="9" fill="#ffb8d5" opacity="0.9" transform="rotate(-15,8,10)"/></svg>`,
+  `<svg width="12" height="16" viewBox="0 0 12 16"><ellipse cx="6" cy="8" rx="5" ry="7" fill="#f088b8" opacity="0.85" transform="rotate(12,6,8)"/></svg>`,
+  `<svg width="14" height="18" viewBox="0 0 14 18"><ellipse cx="7" cy="9" rx="5.5" ry="8" fill="#e878a8" opacity="0.8"/></svg>`,
+  `<svg width="10" height="14" viewBox="0 0 10 14"><ellipse cx="5" cy="7" rx="4" ry="6" fill="#ffd0e8" opacity="0.9" transform="rotate(-20,5,7)"/></svg>`,
+];
+
+function spawnPetal(){
+  const d=document.createElement('div');
+  d.className='petal';
+  d.innerHTML=svgs[Math.floor(Math.random()*svgs.length)];
+  d.style.left=Math.random()*100+'vw';
+  const dur=5+Math.random()*7;
+  d.style.animationDuration=dur+'s';
+  d.style.animationDelay=Math.random()*2+'s';
+  petC.appendChild(d);
+  setTimeout(()=>d.remove(),(dur+3)*1000);
+}
+for(let i=0;i<14;i++) setTimeout(spawnPetal,i*350);
+setInterval(spawnPetal,1000);
+
+function spawnSpark(){
+  const s=document.createElement('div');
+  s.className='sp';
+  s.style.left=(8+Math.random()*84)+'%';
+  s.style.top=(8+Math.random()*84)+'%';
+  const sz=3+Math.random()*5;
+  s.style.width=s.style.height=sz+'px';
+  const dur=1.5+Math.random()*2;
+  s.style.animationDuration=dur+'s';
+  s.style.animationDelay=Math.random()+'s';
+  s.style.boxShadow='0 0 5px 2px rgba(255,255,255,0.9)';
+  spkC.appendChild(s);
+  setTimeout(()=>s.remove(),(dur+2)*1000);
+}
+for(let i=0;i<18;i++) setTimeout(spawnSpark,i*250);
+setInterval(spawnSpark,500);
+</script>
