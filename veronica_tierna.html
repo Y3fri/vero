@@ -1,98 +1,128 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Nunito:wght@200;300;400&display=swap');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Verónica 🌸</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Nunito:wght@200;300;400&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box;}
+    *{margin:0;padding:0;box-sizing:border-box;}
 
-.scene{
-  width:100%;height:100vh;min-height:500px;
-  background: radial-gradient(ellipse at 40% 30%, #fff0f8 0%, #ffe4f2 40%, #ffd0e8 80%, #ffbedd 100%);
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-}
+    .scene{
+      width:100%;height:100vh;min-height:600px;
+      background: radial-gradient(ellipse at 40% 30%, #fff0f8 0%, #ffe4f2 40%, #ffd0e8 80%, #ffbedd 100%);
+      position:relative;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
+    }
 
-.bg-blob{position:absolute;border-radius:50%;filter:blur(70px);animation:blobMove 7s ease-in-out infinite alternate;}
-.b1{width:380px;height:380px;background:rgba(255,192,220,0.45);top:-120px;left:-80px;}
-.b2{width:280px;height:280px;background:rgba(230,150,200,0.3);bottom:-60px;right:-40px;animation-delay:2.5s;}
-.b3{width:200px;height:200px;background:rgba(255,230,245,0.5);top:40%;left:60%;animation-delay:1.5s;}
-@keyframes blobMove{from{transform:translate(0,0)scale(1);}to{transform:translate(20px,15px)scale(1.07);}}
+    .bg-blob{position:absolute;border-radius:50%;filter:blur(70px);animation:blobMove 7s ease-in-out infinite alternate;}
+    .b1{width:380px;height:380px;background:rgba(255,192,220,0.45);top:-120px;left:-80px;}
+    .b2{width:280px;height:280px;background:rgba(230,150,200,0.3);bottom:-60px;right:-40px;animation-delay:2.5s;}
+    .b3{width:200px;height:200px;background:rgba(255,230,245,0.5);top:40%;left:60%;animation-delay:1.5s;}
+    @keyframes blobMove{from{transform:translate(0,0)scale(1);}to{transform:translate(20px,15px)scale(1.07);}}
 
-/* Pétalos cayendo */
-.petal{position:absolute;top:-30px;pointer-events:none;animation:fallP linear infinite;opacity:0;}
-@keyframes fallP{
-  0%{opacity:0;transform:translateY(0) rotate(0deg);}
-  8%{opacity:1;}
-  90%{opacity:0.5;}
-  100%{opacity:0;transform:translateY(105vh) rotate(500deg);}
-}
+    /* Pétalos cayendo */
+    .petal{position:absolute;top:-30px;pointer-events:none;animation:fallP linear infinite;opacity:0;z-index:1;}
+    @keyframes fallP{
+      0%{opacity:0;transform:translateY(0) rotate(0deg);}
+      8%{opacity:1;}
+      90%{opacity:0.5;}
+      100%{opacity:0;transform:translateY(105vh) rotate(500deg);}
+    }
 
-/* Flores esquinas */
-.cf{position:absolute;animation:cfFloat 5s ease-in-out infinite alternate;pointer-events:none;}
-.cf1{top:-15px;left:-15px;animation-delay:0s;}
-.cf2{top:-15px;right:-15px;animation-delay:1.2s;}
-.cf3{bottom:-15px;left:-15px;animation-delay:2.4s;}
-.cf4{bottom:-15px;right:-15px;animation-delay:0.6s;}
-@keyframes cfFloat{
-  from{transform:translate(0,0)rotate(0deg);}
-  to{transform:translate(6px,-10px)rotate(6deg);}
-}
+    /* Flores esquinas */
+    .cf{position:absolute;animation:cfFloat 5s ease-in-out infinite alternate;pointer-events:none;z-index:0;}
+    .cf1{top:-15px;left:-15px;animation-delay:0s;}
+    .cf2{top:-15px;right:-15px;animation-delay:1.2s;}
+    .cf3{bottom:-15px;left:-15px;animation-delay:2.4s;}
+    .cf4{bottom:-15px;right:-15px;animation-delay:0.6s;}
+    @keyframes cfFloat{
+      from{transform:translate(0,0)rotate(0deg);}
+      to{transform:translate(6px,-10px)rotate(6deg);}
+    }
 
-/* Iconos flotantes */
-.floatie{position:absolute;pointer-events:none;animation:floatDrift ease-in-out infinite alternate;}
-@keyframes floatDrift{
-  from{transform:translate(0,0)rotate(-8deg);}
-  to{transform:translate(10px,-14px)rotate(8deg);}
-}
+    /* Iconos flotantes */
+    .floatie{position:absolute;pointer-events:none;animation:floatDrift ease-in-out infinite alternate;z-index:0;}
+    @keyframes floatDrift{
+      from{transform:translate(0,0)rotate(-8deg);}
+      to{transform:translate(10px,-14px)rotate(8deg);}
+    }
 
-/* Centro */
-.center{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;}
+    /* Centro */
+    .center{
+      position:relative;z-index:10;
+      display:flex;flex-direction:column;
+      align-items:center;text-align:center;
+      gap:0;
+      padding:40px 20px;
+    }
 
-.main-flower{
-  width:clamp(150px,25vw,210px);
-  height:clamp(150px,25vw,210px);
-  animation:flowerFloat 4s ease-in-out infinite;
-  filter:drop-shadow(0 8px 28px rgba(200,60,120,0.28));
-}
-@keyframes flowerFloat{
-  0%,100%{transform:translateY(0)rotate(0deg);}
-  50%{transform:translateY(-13px)rotate(3deg);}
-}
+    /* 👇 CONTENEDOR DE LA FLOR (para que no se corte) */
+    .flower-wrapper{
+      width:clamp(180px,28vw,250px);
+      height:clamp(200px,32vw,280px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:10px;
+    }
 
-.label{
-  font-family:'Nunito',sans-serif;
-  font-weight:300;font-size:clamp(9px,1.8vw,12px);
-  letter-spacing:7px;color:#c0507a;text-transform:uppercase;
-  margin-top:clamp(14px,2.5vw,22px);
-  animation:fadeUp 1s ease forwards;opacity:0;animation-delay:0.4s;
-}
-.name{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:300;font-size:clamp(54px,11vw,90px);
-  color:#7a1a40;line-height:0.92;letter-spacing:-1px;
-  animation:fadeUp 1s ease forwards;opacity:0;animation-delay:0.7s;
-}
-.name em{font-style:italic;color:#c03868;}
+    .main-flower{
+      width:100%;
+      height:100%;
+      animation:flowerFloat 4s ease-in-out infinite;
+      filter:drop-shadow(0 8px 28px rgba(200,60,120,0.28));
+    }
+    
+    @keyframes flowerFloat{
+      0%,100%{transform:translateY(0)rotate(0deg);}
+      50%{transform:translateY(-10px)rotate(2deg);}
+    }
 
-.div-row{display:flex;align-items:center;gap:10px;margin:clamp(10px,2vw,16px) 0;animation:fadeUp 1s ease forwards;opacity:0;animation-delay:1s;}
-.dl{width:clamp(35px,7vw,65px);height:1px;background:linear-gradient(to right,transparent,#d0608a);}
-.dl.r{background:linear-gradient(to left,transparent,#d0608a);}
-.dd{width:5px;height:5px;border-radius:50%;background:#d0608a;}
+    .label{
+      font-family:'Nunito',sans-serif;
+      font-weight:300;font-size:clamp(10px,2vw,14px);
+      letter-spacing:7px;color:#c0507a;text-transform:uppercase;
+      margin-top:8px;
+      animation:fadeUp 1s ease forwards;opacity:0;animation-delay:0.4s;
+    }
+    
+    .name{
+      font-family:'Cormorant Garamond',serif;
+      font-weight:300;font-size:clamp(48px,10vw,80px);
+      color:#7a1a40;line-height:1;letter-spacing:-1px;
+      animation:fadeUp 1s ease forwards;opacity:0;animation-delay:0.7s;
+    }
+    .name em{font-style:italic;color:#c03868;}
 
-.msg{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-size:clamp(15px,2.8vw,21px);
-  color:#8a2450;line-height:1.5;
-  animation:fadeUp 1s ease forwards;opacity:0;animation-delay:1.3s;
-}
+    .div-row{
+      display:flex;align-items:center;gap:10px;
+      margin:12px 0;
+      animation:fadeUp 1s ease forwards;opacity:0;animation-delay:1s;
+    }
+    .dl{width:clamp(35px,7vw,65px);height:1px;background:linear-gradient(to right,transparent,#d0608a);}
+    .dl.r{background:linear-gradient(to left,transparent,#d0608a);}
+    .dd{width:5px;height:5px;border-radius:50%;background:#d0608a;}
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(16px);}
-  to{opacity:1;transform:translateY(0);}
-}
+    .msg{
+      font-family:'Cormorant Garamond',serif;
+      font-style:italic;font-size:clamp(16px,3vw,22px);
+      color:#8a2450;line-height:1.5;
+      animation:fadeUp 1s ease forwards;opacity:0;animation-delay:1.3s;
+    }
 
-/* Sparkles */
-.sp{position:absolute;border-radius:50%;background:#fff;pointer-events:none;animation:spAnim ease-in-out infinite;}
-@keyframes spAnim{0%,100%{opacity:0;transform:scale(0);}50%{opacity:1;transform:scale(1);}}
-</style>
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(16px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    /* Sparkles */
+    .sp{position:absolute;border-radius:50%;background:#fff;pointer-events:none;z-index:2;animation:spAnim ease-in-out infinite;}
+    @keyframes spAnim{0%,100%{opacity:0;transform:scale(0);}50%{opacity:1;transform:scale(1);}}
+  </style>
+</head>
+<body>
 
 <div class="scene">
   <div class="bg-blob b1"></div>
@@ -112,7 +142,8 @@
       <circle cx="0" cy="0" r="7" fill="#ffb820"/>
     </g>
   </svg>
-  <svg class="cf cf2" width="130" height="130" viewBox="0 0 130 130" style="transform-origin:top right">
+  
+  <svg class="cf cf2" width="130" height="130" viewBox="0 0 130 130">
     <g transform="translate(108,22)">
       <ellipse cx="0" cy="-32" rx="11" ry="22" fill="#e8a0d0" opacity="0.7" transform="rotate(0)"/>
       <ellipse cx="0" cy="-32" rx="11" ry="22" fill="#da90c4" opacity="0.7" transform="rotate(72)"/>
@@ -123,6 +154,7 @@
       <circle cx="0" cy="0" r="6" fill="#ffaa28"/>
     </g>
   </svg>
+  
   <svg class="cf cf3" width="120" height="120" viewBox="0 0 120 120">
     <g transform="translate(20,98)">
       <ellipse cx="0" cy="-28" rx="10" ry="20" fill="#ffc0da" opacity="0.7" transform="rotate(0)"/>
@@ -136,6 +168,7 @@
       <circle cx="0" cy="0" r="6" fill="#ffa820"/>
     </g>
   </svg>
+  
   <svg class="cf cf4" width="140" height="140" viewBox="0 0 140 140">
     <g transform="translate(118,118)">
       <ellipse cx="0" cy="-34" rx="12" ry="24" fill="#f098c8" opacity="0.7" transform="rotate(0)"/>
@@ -159,46 +192,52 @@
 
   <!-- CENTRO -->
   <div class="center">
-    <svg class="main-flower" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-      <!-- pétalos outer -->
-      <g transform="translate(110,108)">
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(40)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(80)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(120)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(160)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(200)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(240)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(280)"/>
-        <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(320)"/>
-      </g>
-      <!-- pétalos inner -->
-      <g transform="translate(110,108)">
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(20)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(60)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(100)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(140)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(180)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(220)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(260)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(300)" opacity="0.88"/>
-        <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(340)" opacity="0.88"/>
-      </g>
-      <!-- tallo -->
-      <path d="M110 178 Q106 198 100 212" stroke="#82c040" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-      <ellipse cx="96" cy="205" rx="10" ry="6" fill="#82c040" transform="rotate(-25,96,205)"/>
-      <path d="M110 188 Q122 196 130 193" stroke="#82c040" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="133" cy="191" rx="9" ry="5.5" fill="#82c040" transform="rotate(-15,133,191)"/>
-      <!-- centro -->
-      <circle cx="110" cy="108" r="24" fill="#ffe060"/>
-      <circle cx="110" cy="108" r="17" fill="#ffc028"/>
-      <circle cx="110" cy="108" r="10" fill="#ff8c10"/>
-      <circle cx="104" cy="104" r="2.2" fill="#cc4400" opacity="0.65"/>
-      <circle cx="116" cy="104" r="2.2" fill="#cc4400" opacity="0.65"/>
-      <circle cx="110" cy="114" r="2.2" fill="#cc4400" opacity="0.65"/>
-      <circle cx="104" cy="113" r="1.5" fill="#cc4400" opacity="0.45"/>
-      <circle cx="116" cy="113" r="1.5" fill="#cc4400" opacity="0.45"/>
-    </svg>
+    <!-- 👇 FLOR EN CONTENEDOR APARTE -->
+    <div class="flower-wrapper">
+      <svg class="main-flower" viewBox="0 0 220 250" xmlns="http://www.w3.org/2000/svg">
+        <!-- tallo (atrás) -->
+        <path d="M110 170 Q108 190 102 210" stroke="#82c040" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="98" cy="206" rx="9" ry="5.5" fill="#82c040" transform="rotate(-25,98,206)"/>
+        <path d="M110 180 Q120 190 126 187" stroke="#82c040" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <ellipse cx="128" cy="185" rx="8" ry="5" fill="#82c040" transform="rotate(-15,128,185)"/>
+        
+        <!-- pétalos outer -->
+        <g transform="translate(110,100)">
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(40)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(80)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(160)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(200)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffbcd8" transform="rotate(280)"/>
+          <ellipse cx="0" cy="-56" rx="19" ry="40" fill="#ffcce0" transform="rotate(320)"/>
+        </g>
+        
+        <!-- pétalos inner -->
+        <g transform="translate(110,100)">
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(20)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(60)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(100)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(140)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(180)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(220)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(260)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(300)" opacity="0.88"/>
+          <ellipse cx="0" cy="-43" rx="13" ry="30" fill="#f07aaa" transform="rotate(340)" opacity="0.88"/>
+        </g>
+        
+        <!-- centro -->
+        <circle cx="110" cy="100" r="24" fill="#ffe060"/>
+        <circle cx="110" cy="100" r="17" fill="#ffc028"/>
+        <circle cx="110" cy="100" r="10" fill="#ff8c10"/>
+        <circle cx="104" cy="96" r="2.2" fill="#cc4400" opacity="0.65"/>
+        <circle cx="116" cy="96" r="2.2" fill="#cc4400" opacity="0.65"/>
+        <circle cx="110" cy="106" r="2.2" fill="#cc4400" opacity="0.65"/>
+        <circle cx="104" cy="105" r="1.5" fill="#cc4400" opacity="0.45"/>
+        <circle cx="116" cy="105" r="1.5" fill="#cc4400" opacity="0.45"/>
+      </svg>
+    </div>
 
     <p class="label">para ti ✿</p>
     <h1 class="name">Veró<em>nica</em></h1>
@@ -254,3 +293,6 @@ function spawnSpark(){
 for(let i=0;i<18;i++) setTimeout(spawnSpark,i*250);
 setInterval(spawnSpark,500);
 </script>
+
+</body>
+</html>
